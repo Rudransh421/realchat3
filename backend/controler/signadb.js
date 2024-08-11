@@ -1,33 +1,33 @@
-const mongoose = require("mongoose");
-mongoose
-  .connect(
-    "mongodb+srv://Sudip:dashsudip@realchat.3jhbc.mongodb.net/?retryWrites=true&w=majority&appName=RealChat"
-  )
-  .then(() => {
+const mongoose = require('mongoose');
+ mongoose.connect('mongodb://localhost:27017/realchat')
+.then(()=>{
     console.log("mongodb connected");
-  })
-  .catch((err) => {
+})
+.catch((err)=>{
     console.log("not connected mongodb ");
-  });
+})
+
+
+
 
 const loginschema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-  },
-  phoneno: {
-    type: String,
-    required: false,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
+    name:{
+        type:String,
+        required:true
+    },
+    email:{
+        type:String,
+        required:true
+    },
+    phoneno:{
+        type:String,
+        required:true
+    },
+    password:{
+        type:String,
+        required:true
+    }
 });
 
-const details = new mongoose.model("persondetails", loginschema);
+const details = new mongoose.model("persondetails",loginschema );
 module.exports = details;

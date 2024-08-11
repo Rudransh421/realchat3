@@ -45,7 +45,10 @@ router.post("/verifyotp-up", async (req, res) => {
       const collection = await connectToDB();
       await collection.deleteOne({ email: email });
 
-      res.render("home");
+      return res.status(200).json({
+        verified: true,
+        message: "OTP verified successfully.",
+      });
     } else {
       // If OTP is invalid, delete the user
       const email = req.body.email; // Extract email from req.body

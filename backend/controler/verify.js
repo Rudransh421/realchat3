@@ -59,11 +59,11 @@ async function verificationSent(req, res, user, type) {
     switch (type) {
       case "signup":
         console.log({ message: "OTP sent successfully" });
-        res.redirect("/verifyotp-up");
+        res.status(200).json({ message: "OTP sent successfully", type });
         break;
       case "login":
         console.log({ message: "OTP sent successfully" });
-        res.redirect("/verifyotp-in");
+        res.status(200).json({ message: "OTP sent successfully", type });
         break;
       default:
         res.status(400).send("Unknown verification type.");
